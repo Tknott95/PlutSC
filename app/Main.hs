@@ -9,4 +9,3 @@ main = do
   writeAlwaysSucceedsScriptV2
   writeHelloDatumScriptV2
   putStrLn "\FINISHED: writing plutus scripts...\n"
-
