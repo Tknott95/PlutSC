@@ -8,3 +8,6 @@
 - AlwaysSucceeds
   * V1 and V2 of no datum or redeemer to always succeed
 
+- Hello Datum
+  * Takes in a bytestring saying hello
+
