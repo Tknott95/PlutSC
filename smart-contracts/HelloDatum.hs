@@ -9,7 +9,6 @@
 {-# LANGUAGE TypeOperators       #-}
 
 -- V1 and V2 scripts
-
 module HelloDatum where
 
 import           Cardano.Api              (writeFileTextEnvelope)
