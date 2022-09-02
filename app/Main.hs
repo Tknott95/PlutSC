@@ -1,7 +1,7 @@
 module Main where
 
 import HelloDatum
-import AlwatsSucceeds
+import AlwaysSucceeds
 
 main :: IO ()
 main = do
