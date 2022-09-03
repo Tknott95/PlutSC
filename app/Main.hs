@@ -8,4 +8,4 @@ main = do
   putStrLn "\nSTARTING: writing plutus scripts...\n"
   writeAlwaysSucceedsScriptV2
   writeHelloDatumScriptV2
-  putStrLn "\FINISHED: writing plutus scripts...\n"
+  putStrLn "\nFINISHED: writing plutus scripts...\n"
