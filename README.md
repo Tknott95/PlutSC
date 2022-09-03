@@ -4,7 +4,11 @@
   Instead of an executable for each
   script I am going to just write them in main.
   To add an executable, edit Plutz.cabal and add in the
-  proper module wanted. This was my original intention yet I find this to be the better proc for right now. Adding a module as an executable takes only a few seconds inside Plutz.cabal.
+  proper module wanted. 
+  
+  This was my original intention yet I find
+  this to be the better proc for right now. 
+  Adding a module as an executable takes only a few seconds inside Plutz.cabal.
 ```
 
 @TODO
