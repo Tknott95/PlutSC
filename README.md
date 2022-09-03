@@ -13,7 +13,8 @@
 ```
 
 @TODO
-* Setup cabal structure to compile executables OR libs of each script
+* Slowly add more scripts
+* ...
 
 ##### Smart Contracts For Ref
 - AlwaysSucceeds
