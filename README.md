@@ -6,7 +6,7 @@
   To add an executable, edit Plutz.cabal and add in the
   proper module wanted. 
   
-  This was my original intention yet I find
+  Using an executable for each was my original intention yet I find
   this to be the better proc for right now. 
   Adding a module as an executable takes 
   only a few seconds inside Plutz.cabal.
