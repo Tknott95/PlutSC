@@ -8,7 +8,8 @@
   
   This was my original intention yet I find
   this to be the better proc for right now. 
-  Adding a module as an executable takes only a few seconds inside Plutz.cabal.
+  Adding a module as an executable takes 
+  only a few seconds inside Plutz.cabal.
 ```
 
 @TODO
