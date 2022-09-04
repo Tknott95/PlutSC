@@ -42,10 +42,8 @@ helloFn dtm _ _ = if dtm P.== helloHex then () else (P.error ())
 helloDatumValidator :: Plutus.Validator
 helloDatumValidator = Plutus.mkValidatorScript $$(PTX.compile [|| helloFn ||])
 
-
 helloDatumScript :: Plutus.Script
 helloDatumScript = Plutus.unValidatorScript helloDatumValidator
-
 
 helloDatumSBS :: SBS.ShortByteString
 helloDatumSBS = SBS.toShort . LBS.toStrict $ serialise helloDatumScript
@@ -54,12 +52,11 @@ helloDatumSBS = SBS.toShort . LBS.toStrict $ serialise helloDatumScript
 helloDatumSerialisedV1 :: PlutusScript PlutusScriptV1
 helloDatumSerialisedV1 = PlutusScriptSerialised helloDatumSBS
 
-writeHelloDatumScriptV1 :: IO ()
-writeHelloDatumScriptV1 = void $ writeFileTextEnvelope "hellodatum-v1.plutus" Nothing helloDatumSerialisedV1
-
-
 helloDatumSerialisedV2 :: PlutusScript PlutusScriptV2
 helloDatumSerialisedV2 = PlutusScriptSerialised helloDatumSBS
+
+writeHelloDatumScriptV1 :: IO ()
+writeHelloDatumScriptV1 = void $ writeFileTextEnvelope "hellodatum-v1.plutus" Nothing helloDatumSerialisedV1
 
 writeHelloDatumScriptV2 :: IO ()
 writeHelloDatumScriptV2 = void $ writeFileTextEnvelope "hellodatum-v2.plutus" Nothing helloDatumSerialisedV2
