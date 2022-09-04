@@ -11,6 +11,11 @@
   Adding a module as an executable takes 
   only a few seconds inside Plutz.cabal.
 ```
+__________________________________
+
+
+- Where do scripts compile to?
+  * you will find them in compiled-scripts/
 
 __________________________________
 
