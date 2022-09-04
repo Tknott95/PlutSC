@@ -11,6 +11,8 @@
   Adding a module as an executable takes 
   only a few seconds inside Plutz.cabal.
 ```
+
+### Typed137 is BROKEN atm!
 __________________________________
 
 - How do I even run this code?
@@ -43,5 +45,5 @@ __________________________________
 - Untyped137 
   * Requires a datum of 137
 
-- Typed 137
+- Typed 137 - NEEDS TO BE FIXED
   *  Requires a datum of 137

@@ -27,7 +27,10 @@ import qualified PlutusTx.Builtins        as BI
 import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
 
-import qualified Ledger.Typed.Scripts as SCS
+import qualified Ledger.Typed.Scripts             as TSCS
+import qualified Plutus.Script.Utils.V1.Scripts       as PSU.V1
+-- import Ledger.Typed.Scripts.Validators as TSCS.Validators
+import qualified Plutus.Script.Utils.V1.Typed.Scripts.Validators as PSU.V1
 
 import           Prelude                  (IO, (.))
 
@@ -36,7 +39,7 @@ rdmrVal :: Integer
 rdmrVal = 137
 
 data ITyped
-instance SCS.ValidatorTypes ITyped where
+instance TSCS.ValidatorTypes ITyped where
   type instance DatumType ITyped    = ()
   type instance RedeemerType ITyped = Integer
 
@@ -44,12 +47,12 @@ instance SCS.ValidatorTypes ITyped where
 typedFn :: () -> Integer -> BuiltinData -> ()
 typedFn _ rdmr _ = traceIfFalse "USING WRONG REDEEMER" (rdmr == rdmrVal)
 
-typed137Validator :: SCS.TypedValidator ITyped
-typed137Validator = SCS.mkTypedValidator @ITyped
+typed137Validator :: TSCS.TypedValidator ITyped
+typed137Validator = TSCS.mkTypedValidator @ITyped
     $$(PTX.compile [|| typedFn ||])
     $$(PTX.compile [||  _wrap ||])
   where 
-    wrap = SCS.wrapValidator @() @Integer 
+    wrap = PSU.V1.wrapValidator @() @Integer 
 
 typed137Script :: Plutus.Script
 typed137Script = Plutus.unValidatorScript typed137Validator
