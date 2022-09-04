@@ -49,7 +49,7 @@ untyped137SBS = SBS.toShort . LBS.toStrict $ serialise untyped137Script
 untyped137SerialisedV1 :: PlutusScript PlutusScriptV1
 untyped137SerialisedV1 = PlutusScriptSerialised untyped137SBS
 
-untypedF137SerialisedV2 :: PlutusScript PlutusScriptV2
+untyped137SerialisedV2 :: PlutusScript PlutusScriptV2
 untyped137SerialisedV2 = PlutusScriptSerialised untyped137SBS
 
 writeUntyped137ScriptV1 :: IO ()
