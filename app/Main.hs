@@ -3,6 +3,7 @@ module Main where
 import HelloDatum
 import AlwaysSucceeds
 import Untyped137
+import Typed137
 
 main :: IO ()
 main = do
@@ -10,4 +11,5 @@ main = do
   writeAlwaysSucceedsScriptV2
   writeHelloDatumScriptV2
   writeUntyped137ScriptV2
+  writeTyped137ScriptV2
   putStrLn "\nFINISHED: writing plutus scripts...\n"

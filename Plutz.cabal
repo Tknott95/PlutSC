@@ -29,7 +29,7 @@ executable Plutz
     -- Modules included in this executable, other than Main.
     other-modules:  HelloDatum
                     , AlwaysSucceeds
-                    , Untyped137
+                    , Untyped137, Typed137
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -58,7 +58,7 @@ library
   hs-source-dirs:      app/smart-contracts
   exposed-modules:     HelloDatum
                      , AlwaysSucceeds
-                     , Untyped137
+                     , Untyped137, Typed137
 
   build-depends:       aeson
                      , base ^>=4.14.3.0

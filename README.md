@@ -38,5 +38,8 @@ __________________________________
 - Hello Datum
   * Takes in a bytestring/hex saying hello
 
-- Untyped137
+- Untyped137 
   * Requires a datum of 137
+
+- Typed 137
+  *  Requires a datum of 137
