@@ -39,10 +39,8 @@ untypedFn _ rdmr _
 untyped137Validator :: Plutus.Validator
 untyped137Validator = Plutus.mkValidatorScript $$(PTX.compile [|| untypedFn ||])
 
-
 untyped137Script :: Plutus.Script
 untyped137Script = Plutus.unValidatorScript untyped137Validator
-
 
 untyped137SBS :: SBS.ShortByteString
 untyped137SBS = SBS.toShort . LBS.toStrict $ serialise untyped137Script
@@ -51,12 +49,11 @@ untyped137SBS = SBS.toShort . LBS.toStrict $ serialise untyped137Script
 untyped137SerialisedV1 :: PlutusScript PlutusScriptV1
 untyped137SerialisedV1 = PlutusScriptSerialised untyped137SBS
 
+untypedF137SerialisedV2 :: PlutusScript PlutusScriptV2
+untyped137SerialisedV2 = PlutusScriptSerialised untyped137SBS
+
 writeUntyped137ScriptV1 :: IO ()
 writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untyped137SerialisedV1
-
-
-untypedFnSerialisedV2 :: PlutusScript PlutusScriptV2
-untypedFnSerialisedV2 = PlutusScriptSerialised untyped137SBS
 
 untyped137SerialisedV2 :: IO ()
 untyped137SerialisedV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untyped137SerialisedV2
