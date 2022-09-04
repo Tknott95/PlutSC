@@ -30,6 +30,8 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
 import qualified Ledger.Typed.Scripts             as LTS
 import Ledger.Typed.Scripts.Validators as LTS.Validators
 
+import Plutus.V1.Ledger.Contexts (ScriptContext)
+
 import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.))
 
@@ -43,7 +45,7 @@ instance LTS.ValidatorTypes ITyped where
   type instance RedeemerType ITyped = Integer
 
 {-# INLINEABLE typedFn #-}
-typedFn :: () -> Integer -> BuiltinData -> ()
+typedFn :: () -> Integer -> ScriptContext -> Bool
 typedFn _ rdmr _ = traceIfFalse "USING WRONG REDEEMER" (rdmr == rdmrVal)
 
 typed137Validator :: LTS.TypedValidator ITyped
