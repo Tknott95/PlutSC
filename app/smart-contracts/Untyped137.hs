@@ -9,7 +9,10 @@
 {-# LANGUAGE TypeOperators       #-}
 
 -- V1 and V2 scripts
-module Untyped137 where
+module Untyped137 (
+  writeUntyped137ScriptV1
+  , writeUntyped137ScriptV2
+) where
 
 import           Cardano.Api              (writeFileTextEnvelope)
 import           Cardano.Api.Shelley      (PlutusScript (PlutusScriptSerialised),
@@ -55,5 +58,5 @@ untyped137SerialisedV2 = PlutusScriptSerialised untyped137SBS
 writeUntyped137ScriptV1 :: IO ()
 writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untyped137SerialisedV1
 
-writeUntyped137SerialisedV2 :: IO ()
-writeUntyped137SerialisedV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untyped137SerialisedV2
+writeUntyped137ScriptV2 :: IO ()
+writeUntyped137ScriptV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untyped137SerialisedV2
