@@ -29,8 +29,11 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
 
 import qualified Ledger.Typed.Scripts             as TSCS
 import Ledger.Typed.Scripts.Validators as TSCS.Validators
-import qualified Plutus.Script.Utils.V1.Typed.Scripts.Validators as PSU.V1
+import           Ledger.Typed.Scripts.Validators
 
+
+import qualified Plutus.Script.Utils.V1.Scripts       as PSUV1
+import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.))
 
 
@@ -51,7 +54,7 @@ typed137Validator = TSCS.mkTypedValidator @ITyped
     $$(PTX.compile [|| typedFn ||])
     $$(PTX.compile [||  _wrap ||])
   where 
-    wrap = PSU.V1.wrapValidator @() @Integer 
+    wrap = PSUV1.wrapValidator @() @Integer 
 
 typed137Script :: Plutus.Script
 typed137Script = Plutus.unValidatorScript typed137Validator
