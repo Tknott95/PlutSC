@@ -26,12 +26,17 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
 import           Prelude                  (IO, (.))
 
 
+-- SHOWING BOTH METHODS (USING HEX OR BYTESTRING)
 helloByteString :: BuiltinData
-helloByteString = PlutusTx.toBuiltinData (0x48656c6c6f21 :: Integer)
+helloByteString = BI.mkB "Hello"
+
+-- hex of Hello (PascalCase)
+helloHex :: BuiltinData
+helloHex = PlutusTx.toBuiltinData (0x48656c6c6f21 :: Integer)
 
 {-# INLINEABLE helloFn #-}
 helloFn :: BuiltinData -> BuiltinData -> BuiltinData -> ()
-helloFn dtm _ _ = if dtm P.== helloByteString then () else (P.error ())
+helloFn dtm _ _ = if dtm P.== helloHex then () else (P.error ())
 
 helloDatumValidator :: Plutus.Validator
 helloDatumValidator = Plutus.mkValidatorScript $$(PlutusTx.compile [|| helloFn ||])
