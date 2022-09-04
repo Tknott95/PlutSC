@@ -27,7 +27,7 @@ import           Prelude                  (IO, (.))
 
 
 rdmrVal :: BuiltinData
-rdmrVal = BI.mkI 137
+rdmrVal = BI.mkI (137 :: Integer)
 
 {-# INLINEABLE untypedFn #-}
 untypedFn :: BuiltinData -> BuiltinData -> BuiltinData -> ()
@@ -40,8 +40,8 @@ untyped137Validator :: Plutus.Validator
 untyped137Validator = Plutus.mkValidatorScript $$(PTX.compile [|| untypedFn ||])
 
 
-untypedFnScript :: Plutus.Script
-untypedFnScript = Plutus.unValidatorScript untyped137Validator
+untyped137Script :: Plutus.Script
+untyped137Script = Plutus.unValidatorScript untyped137Validator
 
 
 untyped137SBS :: SBS.ShortByteString
