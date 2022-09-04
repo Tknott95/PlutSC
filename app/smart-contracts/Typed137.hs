@@ -53,7 +53,7 @@ typed137Validator = LTS.mkTypedValidator @ITyped
     $$(PTX.compile [|| typedFn ||])
     $$(PTX.compile [||  _wrap ||])
   where 
-    wrap = PSUV1.mkUntypedValidator
+    _wrap = PSUV1.mkUntypedValidator
     -- .wrapValidator @() @Integer 
     -- best way I know for v2 atm using mkUntypedValidator
 
