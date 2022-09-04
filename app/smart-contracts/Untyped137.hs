@@ -19,7 +19,7 @@ import qualified Data.ByteString.Lazy     as LBS
 import qualified Data.ByteString.Short    as SBS
 import           Data.Functor             (void)
 import qualified Plutus.V1.Ledger.Scripts as Plutus
-import qualified PlutusTx
+import qualified PlutusTx                 as PTX
 import qualified PlutusTx.Builtins        as BI
 import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
@@ -36,27 +36,27 @@ untypedFn _ rdmr _
   | otherwise = traceError "USING WRONG REDEEMER"
 
 
-untypedFnValidator :: Plutus.Validator
-untypedFnValidator = Plutus.mkValidatorScript $$(PlutusTx.compile [|| untypedFn ||])
+untyped137Validator :: Plutus.Validator
+untyped137Validator = Plutus.mkValidatorScript $$(PTX.compile [|| untypedFn ||])
 
 
 untypedFnScript :: Plutus.Script
-untypedFnScript = Plutus.unValidatorScript untypedFnValidator
+untypedFnScript = Plutus.unValidatorScript untyped137Validator
 
 
-untypedFnSBS :: SBS.ShortByteString
-untypedFnSBS = SBS.toShort . LBS.toStrict $ serialise untypedFnScript
+untyped137SBS :: SBS.ShortByteString
+untyped137SBS = SBS.toShort . LBS.toStrict $ serialise untyped137Script
 
 
-untypedFnSerialisedV1 :: PlutusScript PlutusScriptV1
-untypedFnSerialisedV1 = PlutusScriptSerialised untypedFnSBS
+untyped137SerialisedV1 :: PlutusScript PlutusScriptV1
+untyped137SerialisedV1 = PlutusScriptSerialised untyped137SBS
 
 writeUntyped137ScriptV1 :: IO ()
-writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untypedFnSerialisedV1
+writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untyped137SerialisedV1
 
 
 untypedFnSerialisedV2 :: PlutusScript PlutusScriptV2
-untypedFnSerialisedV2 = PlutusScriptSerialised untypedFnSBS
+untypedFnSerialisedV2 = PlutusScriptSerialised untyped137SBS
 
-writeUntyped137ScriptV2 :: IO ()
-writeUntyped137ScriptV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untypedFnSerialisedV2
+untyped137SerialisedV2 :: IO ()
+untyped137SerialisedV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untyped137SerialisedV2
