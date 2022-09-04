@@ -28,7 +28,7 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
 
 import qualified Ledger.Typed.Scripts             as TSCS
--- import Ledger.Typed.Scripts.Validators as TSCS.Validators
+import Ledger.Typed.Scripts.Validators as TSCS.Validators
 import qualified Plutus.Script.Utils.V1.Typed.Scripts.Validators as PSU.V1
 
 import           Prelude                  (IO, (.))
