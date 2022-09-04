@@ -28,7 +28,7 @@ import           Prelude                  (IO, (.))
 
 -- SHOWING BOTH METHODS (USING HEX OR BYTESTRING)
 helloByteString :: BuiltinData
-helloByteString = BI.mkB "Hello"
+helloByteString = BI.mkB ("Hello" :: BuiltinByteString)
 
 -- hex of Hello (PascalCase)
 helloHex :: BuiltinData
