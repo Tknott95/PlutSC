@@ -10,7 +10,7 @@
 
 -- V1 and V2 scripts
 module AlwaysSucceeds (
-    writeAlwaysSucceedsScript,
+    writeAlwaysSucceedsScriptV1,
     writeAlwaysSucceedsScriptV2,
   )
 where
@@ -51,7 +51,7 @@ alwaysSucceedsSerialisedV2 :: PlutusScript PlutusScriptV2
 alwaysSucceedsSerialisedV2 = PlutusScriptSerialised alwaysSucceedsSBS
 
 writeAlwaysSucceedsScriptV1 :: IO ()
-writeAlwaysSucceedsScriptV1 = void $ writeFileTextEnvelope "alwayssucceeds-v1.plutus" Nothing alwaysSucceedsSerialisedV1
+writeAlwaysSucceedsScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/alwayssucceeds-v1.plutus" Nothing alwaysSucceedsSerialisedV1
 
 writeAlwaysSucceedsScriptV2 :: IO ()
-writeAlwaysSucceedsScriptV2 = void $ writeFileTextEnvelope "alwayssucceeds-v2.plutus" Nothing alwaysSucceedsSerialisedV2
+writeAlwaysSucceedsScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/alwayssucceeds-v2.plutus" Nothing alwaysSucceedsSerialisedV2

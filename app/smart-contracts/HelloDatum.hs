@@ -56,7 +56,7 @@ helloDatumSerialisedV2 :: PlutusScript PlutusScriptV2
 helloDatumSerialisedV2 = PlutusScriptSerialised helloDatumSBS
 
 writeHelloDatumScriptV1 :: IO ()
-writeHelloDatumScriptV1 = void $ writeFileTextEnvelope "hellodatum-v1.plutus" Nothing helloDatumSerialisedV1
+writeHelloDatumScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/hellodatum-v1.plutus" Nothing helloDatumSerialisedV1
 
 writeHelloDatumScriptV2 :: IO ()
-writeHelloDatumScriptV2 = void $ writeFileTextEnvelope "hellodatum-v2.plutus" Nothing helloDatumSerialisedV2
+writeHelloDatumScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/hellodatum-v2.plutus" Nothing helloDatumSerialisedV2

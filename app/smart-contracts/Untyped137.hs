@@ -56,7 +56,7 @@ untyped137SerialisedV2 :: PlutusScript PlutusScriptV2
 untyped137SerialisedV2 = PlutusScriptSerialised untyped137SBS
 
 writeUntyped137ScriptV1 :: IO ()
-writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untyped137SerialisedV1
+writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/untyped137-v1.plutus" Nothing untyped137SerialisedV1
 
 writeUntyped137ScriptV2 :: IO ()
-writeUntyped137ScriptV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untyped137SerialisedV2
+writeUntyped137ScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/untyped137-v2.plutus" Nothing untyped137SerialisedV2
