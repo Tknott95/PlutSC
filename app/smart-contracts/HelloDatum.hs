@@ -19,7 +19,7 @@ import qualified Data.ByteString.Lazy     as LBS
 import qualified Data.ByteString.Short    as SBS
 import           Data.Functor             (void)
 import qualified Plutus.V1.Ledger.Scripts as Plutus
-import qualified PlutusTx
+import qualified PlutusTx                 as PTX
 import qualified PlutusTx.Builtins        as BI
 import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
@@ -32,14 +32,14 @@ helloByteString = BI.mkB "Hello"
 
 -- hex of Hello (PascalCase)
 helloHex :: BuiltinData
-helloHex = PlutusTx.toBuiltinData (0x48656c6c6f21 :: Integer)
+helloHex = PTX.toBuiltinData (0x48656c6c6f21 :: Integer)
 
 {-# INLINEABLE helloFn #-}
 helloFn :: BuiltinData -> BuiltinData -> BuiltinData -> ()
 helloFn dtm _ _ = if dtm P.== helloHex then () else (P.error ())
 
 helloDatumValidator :: Plutus.Validator
-helloDatumValidator = Plutus.mkValidatorScript $$(PlutusTx.compile [|| helloFn ||])
+helloDatumValidator = Plutus.mkValidatorScript $$(PTX.compile [|| helloFn ||])
 
 
 helloDatumScript :: Plutus.Script
