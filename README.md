@@ -16,7 +16,7 @@ __________________________________
 - Where is the uncompiled code?
   * You can find this inside app/smart-contracts/
 - How do I write a new script without an executable and cabal run <that-module>?
-  * You use the write... function inside main. If it is requested, or I find a need for binaries for each, I can do it within seconds by doing what above states.
+  * You use the write...ScriptV2/V1 function inside main. If it is requested, or I find a need for binaries for each, I can do it within seconds by doing what above states.
 
 - Where do scripts compile to?
   * you will find them in compiled-scripts/
