@@ -10,8 +10,8 @@
 
 -- V1 and V2 scripts
 module Untyped137 (
-  writeUntyped137ScriptV1
-  , writeUntyped137ScriptV2
+  writeUntyped137ScriptV1,
+  writeUntyped137ScriptV2
 ) where
 
 import           Cardano.Api              (writeFileTextEnvelope)

@@ -9,9 +9,7 @@
 {-# LANGUAGE TypeOperators       #-}
 
 -- V1 and V2 scripts
-module AlwaysSucceeds
-  ( alwaysSucceedsSerialised,
-    alwaysSucceedsSBS,
+module AlwaysSucceeds (
     writeAlwaysSucceedsScript,
     writeAlwaysSucceedsScriptV2,
   )
