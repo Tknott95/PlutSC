@@ -57,8 +57,11 @@ typed137Validator = LTS.mkTypedValidator @ITyped
     -- .wrapValidator @() @Integer 
     -- best way I know for v2 atm using mkUntypedValidator
 
+typed137ValidatorDone :: Plutus.Validator
+typed137ValidatorDone = validatorScript typed137Validator
+
 typed137Script :: Plutus.Script
-typed137Script = Plutus.unValidatorScript typed137Validator
+typed137Script = Plutus.unValidatorScript typed137ValidatorDone
 
 typed137SBS :: SBS.ShortByteString
 typed137SBS = SBS.toShort . LBS.toStrict $ serialise typed137Script
