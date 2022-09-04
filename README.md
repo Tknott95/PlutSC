@@ -13,6 +13,8 @@
 ```
 __________________________________
 
+- How do I even run this code?
+  * cabal run
 - Where is the uncompiled code?
   * You can find this inside app/smart-contracts/
 - How do I write a new script without an executable and cabal run <that-module>?
