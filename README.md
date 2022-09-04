@@ -12,7 +12,7 @@
   only a few seconds inside Plutz.cabal.
 ```
 
-### Typed137 is BROKEN atm!
+### The yntax for typed validators is a tad diff after V2 as Typed137.hs shows 
 __________________________________
 
 - How do I even run this code?
@@ -46,4 +46,5 @@ __________________________________
   * Requires a datum of 137
 
 - Typed 137 - NEEDS TO BE FIXED
-  *  Requires a datum of 137
+  * Requires a datum of 137
+  * The syntax is diff from pre V2 plutus typed validators
