@@ -15,7 +15,7 @@ __________________________________
 
 
 - Where do scripts compile to?
- * you will find them in compiled-scripts/
+  * you will find them in compiled-scripts/
 
 __________________________________
 
