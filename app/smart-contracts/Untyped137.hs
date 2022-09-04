@@ -25,6 +25,7 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
 import           Prelude                  (IO, (.))
 
+
 rdmrVal :: BuiltinData
 rdmrVal = BI.mkI 137
 
@@ -50,12 +51,12 @@ untypedFnSBS = SBS.toShort . LBS.toStrict $ serialise untypedFnScript
 untypedFnSerialisedV1 :: PlutusScript PlutusScriptV1
 untypedFnSerialisedV1 = PlutusScriptSerialised untypedFnSBS
 
-writeUntypedFnScriptV1 :: IO ()
-writeUntypedFnScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untypedFnSerialisedV1
+writeUntyped137ScriptV1 :: IO ()
+writeUntyped137ScriptV1 = void $ writeFileTextEnvelope "untyped137-v1.plutus" Nothing untypedFnSerialisedV1
 
 
 untypedFnSerialisedV2 :: PlutusScript PlutusScriptV2
 untypedFnSerialisedV2 = PlutusScriptSerialised untypedFnSBS
 
-writeUntypedFnScriptV2 :: IO ()
-writeUntypedFnScriptV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untypedFnSerialisedV2
+writeUntyped137ScriptV2 :: IO ()
+writeUntyped137ScriptV2 = void $ writeFileTextEnvelope "untyped137-v2.plutus" Nothing untypedFnSerialisedV2
