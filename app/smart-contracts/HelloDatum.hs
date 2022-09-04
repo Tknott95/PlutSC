@@ -31,6 +31,7 @@ helloByteString :: BuiltinData
 helloByteString = BI.mkB ("Hello" :: BuiltinByteString)
 
 -- hex of Hello (PascalCase)
+-- returns a (hex -> int) conversion 
 helloHex :: BuiltinData
 helloHex = PTX.toBuiltinData (0x48656c6c6f21 :: Integer)
 
