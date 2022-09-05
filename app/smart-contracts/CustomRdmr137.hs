@@ -59,7 +59,7 @@ rdmr137Validator = LTS.mkTypedValidator @ITyped
     $$(PTX.compile [||  _wrap ||])
   where 
     -- wrap = PSUV1.wrapValidator @RdmrType 
-    wrap = LTS.Validators.mkTypedValidator @() @RdmrType 
+    wrap = LTS.Validators.wrapValidator @() @RdmrType 
     -- best way I know for v2 atm using mkUntypedValidator
 
 rdmr137ValidatorDone :: Plutus.Validator
