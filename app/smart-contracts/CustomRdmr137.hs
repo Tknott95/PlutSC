@@ -36,10 +36,13 @@ import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.))
 
 
+-- WRAPPING HOW I WOULD ON V1 DOESNT WORK WITH V2. BROKEN RIGHT NOW
+
 rdmrVal :: Integer
 rdmrVal = 137
 
 newtype RdmrType = RdmrType Integer
+PTX.unstableMakeIsData ''RdmrType
 
 data ITyped
 instance LTS.ValidatorTypes ITyped where
@@ -55,8 +58,8 @@ rdmr137Validator = LTS.mkTypedValidator @ITyped
     $$(PTX.compile [|| typedFn ||])
     $$(PTX.compile [||  _wrap ||])
   where 
-    _wrap = PSUV1.mkUntypedValidator
-    -- .wrapValidator @() @Integer 
+    -- wrap = PSUV1.wrapValidator @RdmrType 
+    wrap = LTS.Validators.mkTypedValidator @() @RdmrType 
     -- best way I know for v2 atm using mkUntypedValidator
 
 rdmr137ValidatorDone :: Plutus.Validator
