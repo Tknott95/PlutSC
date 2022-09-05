@@ -44,7 +44,7 @@ newtype RdmrType = RdmrType Integer
 data ITyped
 instance LTS.ValidatorTypes ITyped where
   type instance DatumType ITyped    = ()
-  type instance RedeemerType ITyped = Integer
+  type instance RedeemerType ITyped = RdmrType
 
 {-# INLINEABLE typedFn #-}
 typedFn :: () -> RdmrType -> ScriptContext -> Bool
