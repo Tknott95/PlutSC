@@ -36,6 +36,8 @@ import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.))
 
 
+-- !!! BROKEN AND REMOVED FROM CABAL PROJECT ATM !! --
+-- V2 Changed how you wrap validators and I need to dig into this --
 -- WRAPPING HOW I WOULD ON V1 DOESNT WORK WITH V2. BROKEN RIGHT NOW
 
 rdmrVal :: Integer
