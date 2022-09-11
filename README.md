@@ -45,6 +45,6 @@ __________________________________
 - Untyped137 
   * Requires a datum of 137
 
-- Typed 137 - NEEDS TO BE FIXED
+- Typed 137 - NEEDS TO BE FIXED (v2 changed the wrapValidator and it isn't importing from any loc)
   * Requires a datum of 137
   * The syntax is diff from pre V2 plutus typed validators
