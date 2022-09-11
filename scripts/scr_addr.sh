@@ -9,6 +9,9 @@
 
  EXAMPLE OF SCRIPT RUNNING:
   ./scr_addr.sh ../compiled-scripts/customDtm137-v2.plutus customDtm137.addr
+
+
+ replace $MAGIC w/ --mainnet for mainnet
 '
 
-cardano-cli address build --payment-script-file $1  --mainnet --out-file ../crypt/addrs/$2
+cardano-cli address build --payment-script-file $1  $MAGIC --out-file ../crypt/addrs/$2
