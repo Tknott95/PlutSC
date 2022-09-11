@@ -35,6 +35,15 @@ __________________________________
 __________________________________
 
 
+``` IMPORTANT NOTE ABOUT V2
+
+ẁrapMintingPolicy and wrapValidator have changed to mkUntypedMintingPolicyt and mkUntypedValidator
+
+via : https://github.com/input-output-hk/plutus-apps/issues/190
+
+```
+
+
 ##### Smart Contracts For Ref
 - AlwaysSucceeds
   * V1 and V2 of no datum or redeemer to always succeed
