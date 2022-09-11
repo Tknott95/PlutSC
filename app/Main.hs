@@ -13,5 +13,7 @@ main = do
   writeHelloDatumScriptV2
   writeUntyped137ScriptV2
   writeTyped137ScriptV2
+
+  writeCstmDtm137ScriptV2
   writeCstmRdmr137ScriptV2
   putStrLn "\nFINISHED: writing plutus scripts...\n"
