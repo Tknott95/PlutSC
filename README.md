@@ -41,6 +41,9 @@ __________________________________
 
 via : https://github.com/input-output-hk/plutus-apps/issues/190
 
+How I know will wrap validators (post Plutus 1-3)
+ -> https://plutus-apps.readthedocs.io/en/stable/plutus/tutorials/basic-validators.html
+
 ```
 
 
