@@ -25,6 +25,9 @@ __________________________________
 - Where do scripts compile to?
   * you will find them in compiled-scripts/
 
+- What is the script file?
+  * Little utility bash scripts
+
 __________________________________
 
 
