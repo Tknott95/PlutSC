@@ -60,7 +60,7 @@ library
   exposed-modules:     HelloDatum
                      , AlwaysSucceeds
                      , Untyped137, Typed137
-                     -- , CustomRdmr137
+                     , CustomRdmr137
 
   build-depends:       aeson
                      , base ^>=4.14.3.0
