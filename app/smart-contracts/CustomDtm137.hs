@@ -47,8 +47,8 @@ PTX.unstableMakeIsData ''DtmType
 
 data ITyped
 instance LTS.ValidatorTypes ITyped where
-  type instance DatumType ITyped    = ()
-  type instance RedeemerType ITyped = DtmType
+  type instance DatumType ITyped    = DtmType
+  type instance RedeemerType ITyped = ()
 
 {-# INLINEABLE typedFn #-}
 typedFn :: DtmType -> () -> ScriptContext -> Bool
