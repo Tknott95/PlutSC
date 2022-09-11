@@ -4,6 +4,7 @@ import HelloDatum
 import AlwaysSucceeds
 import Untyped137
 import Typed137
+import CustomRdmr137
 
 main :: IO ()
 main = do
@@ -12,4 +13,5 @@ main = do
   writeHelloDatumScriptV2
   writeUntyped137ScriptV2
   writeTyped137ScriptV2
+  writeCstmRdmr137ScriptV2
   putStrLn "\nFINISHED: writing plutus scripts...\n"
