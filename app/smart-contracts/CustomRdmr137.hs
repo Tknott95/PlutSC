@@ -31,7 +31,7 @@ import qualified Ledger.Typed.Scripts             as LTS
 import Ledger.Typed.Scripts.Validators as LTS.Validators
 
 import Plutus.V1.Ledger.Contexts (ScriptContext)
-
+import Plutus.V1.Ledger.Scripts as PLVS
 import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.))
 
@@ -59,8 +59,9 @@ rdmr137Validator = LTS.mkTypedValidator @ITyped
     $$(PTX.compile [|| typedFn ||])
     $$(PTX.compile [||  _wrap ||])
   where 
-    -- wrap = PSUV1.wrapValidator @RdmrType 
-    wrap = LTS.Validators.wrapValidator @() @RdmrType 
+    -- _wrap = PSUV1.wrapValidator @() @RdmrType 
+    _wrap = mkUntypedValidator  @() @RdmrType 
+    -- _wrap = LTS.Validators.wrapValidator @() @RdmrType 
     -- best way I know for v2 atm using mkUntypedValidator
 
 rdmr137ValidatorDone :: Plutus.Validator

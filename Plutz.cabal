@@ -30,7 +30,7 @@ executable Plutz
     other-modules:  HelloDatum
                     , AlwaysSucceeds
                     , Untyped137, Typed137
-                    -- , CustomRdmr137
+                    , CustomRdmr137
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
