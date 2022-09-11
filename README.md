@@ -26,7 +26,7 @@ __________________________________
   * you will find them in compiled-scripts/
 
 - What is the script file?
-  * Little utility bash scripts
+  * Little bash scripts for dev ops
 
 __________________________________
 
