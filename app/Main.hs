@@ -4,7 +4,10 @@ import HelloDatum
 import AlwaysSucceeds
 import Untyped137
 import Typed137
+
+import CustomDtm137
 import CustomRdmr137
+
 
 main :: IO ()
 main = do
