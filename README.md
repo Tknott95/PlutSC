@@ -28,6 +28,9 @@ __________________________________
 - What is the script file?
   * Little bash scripts for dev ops
 
+- What is the crypt file?
+  * This holds addresses and keys
+
 __________________________________
 
 
