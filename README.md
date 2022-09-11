@@ -12,7 +12,7 @@
   only a few seconds inside Plutz.cabal.
 ```
 
-### The yntax for typed validators is a tad diff after V2 as Typed137.hs shows 
+### The syntax for typed validators is a tad diff after V2 as Typed137.hs shows 
 __________________________________
 
 - How do I even run this code?
