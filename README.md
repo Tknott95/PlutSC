@@ -75,12 +75,12 @@ __________________________________
 
 ##### Scripts For Ref
 - scr_addr.sh $1
- * creates a script address for a compiled .plutus script
- * $1 is your compiled .plutus script
+  * creates a script address for a compiled .plutus script
+  * $1 is your compiled .plutus script
 
 - query_all_utxo.sh $1
- * return all utxos at that addr 
- * $1 is your address you are using to query your utxos
+  * return all utxos at that addr 
+  * $1 is your address you are using to query your utxos
 
 __________________________________
 
