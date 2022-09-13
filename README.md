@@ -25,10 +25,10 @@ __________________________________
 - Where do scripts compile to?
   * you will find them in compiled-scripts/
 
-- What is the script file?
+- What is the script folder?
   * Little bash scripts for dev ops
 
-- What is the crypt file?
+- What is the crypt folder?
   * This holds addresses and keys
 
 __________________________________
