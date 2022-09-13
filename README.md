@@ -85,7 +85,7 @@ __________________________________
 __________________________________
 
 ##### @TODO
- - finish these docs with what has been done
+- finish these docs with what has been done
   * bash script documentation for one
- - start bringing in v2 mkMintingPolicy and paramterized scripts
- - throw in some fun scripts with little innovative twists
+- start bringing in v2 mkMintingPolicy and paramterized scripts
+- throw in some fun scripts with little innovative twists
