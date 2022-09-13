@@ -5,6 +5,9 @@
 
  takes in a json file and returns a hash
 
+ strings do not work, you have to encode into Word8 then store ints into an array
+ OR as a hex encoded value
+
  REF TO MAKE JSON AS OBJECT PROPER: https://forum.cardano.org/t/cardano-cli-hash-script-data/80770/4 */
 
 
