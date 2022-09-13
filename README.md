@@ -69,3 +69,20 @@ How I know will wrap validators (post Plutus 1-3)
 
 - CustomRdmr137
   * wrapValidator is now mkUntypedValidator
+
+
+##### Scripts For Ref
+- scr_addr.sh $1
+ * creates a script address for a compiled .plutus script
+ * $1 is your compiled .plutus script
+
+- query_all_utxo.sh $1
+ * return all utxos at that addr 
+ * $1 is your address you are using to query your utxos
+
+
+ ##### @TODO
+ - finish these docs with what has been done
+  * bash script documentation for one
+ - start bringing in v2 mkMintingPolicy and paramterized scripts
+ - throw in some fun scripts with little innovative twists
