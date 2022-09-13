@@ -51,6 +51,7 @@ How I know will wrap validators (post Plutus 1-3)
  -> https://plutus-apps.readthedocs.io/en/stable/plutus/tutorials/basic-validators.html
 
 ```
+__________________________________
 
 
 ##### Smart Contracts For Ref
@@ -70,6 +71,7 @@ How I know will wrap validators (post Plutus 1-3)
 - CustomRdmr137
   * wrapValidator is now mkUntypedValidator
 
+__________________________________
 
 ##### Scripts For Ref
 - scr_addr.sh $1
@@ -80,8 +82,9 @@ How I know will wrap validators (post Plutus 1-3)
  * return all utxos at that addr 
  * $1 is your address you are using to query your utxos
 
+__________________________________
 
- ##### @TODO
+##### @TODO
  - finish these docs with what has been done
   * bash script documentation for one
  - start bringing in v2 mkMintingPolicy and paramterized scripts
