@@ -50,7 +50,8 @@ data TimeLockingParam = TimeLockingParam {
 } deriving Show
 
 -- PARAMETERIZING INSTEAD OF USING THE DATUM
-PTX.makeLift ''TimeLockingDatum
+PTX.makeLift ''TimeLockingParam
+-- leaving the makeData as it show the diff from liftCode when parameterizing
 -- PTX.unstableMakeIsData ''TimeLockingDatum (PARAMTERIZING INSTEAD OF USING THE DATUM)
 
 {-# INLINEABLE timeLockingValFn #-}
@@ -71,7 +72,7 @@ timeLockingValFn prm _ _ ctx =
 
 data TimeLocking
 instance LTS.ValidatorTypes TimeLocking where
-  type instance DatumType TimeLocking = ())
+  type instance DatumType TimeLocking = ()
   type instance RedeemerType TimeLocking = ()
 
 timeLockingValidator :: TimeLockingParam LTS.TypedValidator TimeLocking
