@@ -50,7 +50,7 @@ data TimeLockingParam = TimeLockingParam {
 } deriving Show
 
 -- PARAMETERIZING INSTEAD OF USING THE DATUM
-PTX.makeLift ''TimeLockingDatum 
+PTX.makeLift ''TimeLockingDatum
 -- PTX.unstableMakeIsData ''TimeLockingDatum (PARAMTERIZING INSTEAD OF USING THE DATUM)
 
 {-# INLINEABLE timeLockingValFn #-}

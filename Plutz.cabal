@@ -31,7 +31,7 @@ executable Plutz
                     , AlwaysSucceeds
                     , Untyped137, Typed137
                     , CustomRdmr137, CustomDtm137,
-                    TimeLockingBasic, TimeLockinParam
+                    TimeLockingBasic, TimeLockingParam
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -62,7 +62,7 @@ library
                      , AlwaysSucceeds
                      , Untyped137, Typed137
                      , CustomRdmr137, CustomDtm137
-                     , TimeLockingBasic, TimeLockinParam
+                     , TimeLockingBasic, TimeLockingParam
 
   build-depends:       aeson
                      , base ^>=4.14.3.0
