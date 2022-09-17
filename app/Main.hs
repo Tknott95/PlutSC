@@ -8,6 +8,8 @@ import Typed137
 import CustomDtm137
 import CustomRdmr137
 
+import TimeLockingBasic
+
 
 main :: IO ()
 main = do
@@ -19,4 +21,6 @@ main = do
 
   writeCstmDtm137ScriptV2
   writeCstmRdmr137ScriptV2
+
+  writeTimeLockingBasicScriptV2
   putStrLn "\nFINISHED: writing plutus scripts...\n"

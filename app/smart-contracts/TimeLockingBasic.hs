@@ -9,7 +9,10 @@
 {-# LANGUAGE TypeOperators       #-}
 
 -- V1 and V2 scripts
-module TimeLockingBasic where
+module TimeLockingBasic (
+    writeTimeLockingBasicScriptV1,
+    writeTimeLockingBasicScriptV2)
+where
 
 import           Cardano.Api              (writeFileTextEnvelope)
 import           Cardano.Api.Shelley      (PlutusScript (PlutusScriptSerialised),
