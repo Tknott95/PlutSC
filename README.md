@@ -71,6 +71,14 @@ __________________________________
 - CustomRdmr137
   * wrapValidator is now mkUntypedValidator
 
+- TimeLockingBasic
+  * Sets a time until you can pull funds that you lock into the script
+  * Passes in a Datum
+
+- TimeLockingParams
+  * Sets a time until you can pull funds that you lock into the script
+  * Passes in parameters
+
 __________________________________
 
 ##### Scripts For Ref
