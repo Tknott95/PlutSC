@@ -30,7 +30,8 @@ executable Plutz
     other-modules:  HelloDatum
                     , AlwaysSucceeds
                     , Untyped137, Typed137
-                    , CustomRdmr137, CustomDtm137
+                    , CustomRdmr137, CustomDtm137,
+                    TimeLockingBasic
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
