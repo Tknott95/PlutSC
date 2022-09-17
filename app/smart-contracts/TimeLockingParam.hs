@@ -75,7 +75,7 @@ timeLockingValFn prm () () ctx =
     _info = scriptContextTxInfo ctx
 
     signedByBeneficiary :: Bool
-    signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ beneficiaryOfFunds prm
+    signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ PaymentPubKeyHash $ beneficiaryOfFunds prm
     -- signedByBeneficiary = txSignedBy _info $ unPaymentPubKeyHash $ beneficiaryOfFunds $prm
 
     hasEnoughTimePassed :: Bool
