@@ -83,7 +83,7 @@ timeLockingValFn prm () () ctx =
     hasEnoughTimePassed :: Bool
     hasEnoughTimePassed = contains (from $ whenAvailable prm) $ txInfoValidRange _info
 
-    -- NOT USING AS THE ABOVE METHOD IS BETTER
+    -- NOT USING AS THE ABOVE METHOD IS BETTER - this loops all txOuts then asks (does this match the hard coded pubKey?)
     -- workaround by scanning txOuts and checking if any match
     -- https://cardano.stackexchange.com/questions/6143/can-you-manually-list-an-address-in-a-smart-contract/6157#6157
     -- outputToCorrectAddr :: TxOut -> Bool
