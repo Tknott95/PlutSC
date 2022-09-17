@@ -44,8 +44,9 @@ import Plutus.V1.Ledger.Scripts as PLVS
 import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.), Show)
 
+-- changed from paymentPubKeyHash
 data TimeLockingParam = TimeLockingParam {
-  beneficiaryOfFunds :: PaymentPubKeyHash,
+  beneficiaryOfFunds :: PubKeyHash,
   whenAvailable :: POSIXTime
 } deriving Show
 
@@ -74,6 +75,7 @@ timeLockingValFn prm () () ctx =
     _info :: TxInfo
     _info = scriptContextTxInfo ctx
 
+    -- changed from PaymentPubKeyHash and then pass the PubKeyHash to it to convert here to check
     signedByBeneficiary :: Bool
     signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ PaymentPubKeyHash $ beneficiaryOfFunds prm
     -- signedByBeneficiary = txSignedBy _info $ unPaymentPubKeyHash $ beneficiaryOfFunds $prm
@@ -81,6 +83,7 @@ timeLockingValFn prm () () ctx =
     hasEnoughTimePassed :: Bool
     hasEnoughTimePassed = contains (from $ whenAvailable prm) $ txInfoValidRange _info
 
+    -- NOT USING AS THE ABOVE METHOD IS BETTER
     -- workaround by scanning txOuts and checking if any match
     -- https://cardano.stackexchange.com/questions/6143/can-you-manually-list-an-address-in-a-smart-contract/6157#6157
     -- outputToCorrectAddr :: TxOut -> Bool
