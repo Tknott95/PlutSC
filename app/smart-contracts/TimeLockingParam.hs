@@ -129,14 +129,14 @@ scriptAddr = scriptHashAddress . valHash
 timeLockingSBS :: SBS.ShortByteString
 timeLockingSBS = SBS.toShort . LBS.toStrict $ serialise $ timeLockingScript mockData
 
--- timeLockingSerialisedV1 :: PlutusScript PlutusScriptV1
--- timeLockingSerialisedV1 = PlutusScriptSerialised timeLockingSBS
+timeLockingSerialisedV1 :: PlutusScript PlutusScriptV1
+timeLockingSerialisedV1 = PlutusScriptSerialised timeLockingSBS
 
--- timeLockingSerialisedV2 :: PlutusScript PlutusScriptV2
--- timeLockingSerialisedV2 = PlutusScriptSerialised timeLockingSBS
+timeLockingSerialisedV2 :: PlutusScript PlutusScriptV2
+timeLockingSerialisedV2 = PlutusScriptSerialised timeLockingSBS
 
--- writeTimeLockingParamScriptV1 :: IO ()
--- writeTimeLockingParamScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v1.plutus" Nothing timeLockingSerialisedV1
+writeTimeLockingParamScriptV1 :: IO ()
+writeTimeLockingParamScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v1.plutus" Nothing timeLockingSerialisedV1
 
--- writeTimeLockingParamScriptV2 :: IO ()
--- writeTimeLockingParamScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v2.plutus" Nothing timeLockingSerialisedV2
+writeTimeLockingParamScriptV2 :: IO ()
+writeTimeLockingParamScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v2.plutus" Nothing timeLockingSerialisedV2
