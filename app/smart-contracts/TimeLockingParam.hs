@@ -57,7 +57,7 @@ mockData :: TimeLockingParam
 mockData = TimeLockingParam {
   beneficiaryOfFunds = "3f7846896a48c59359746ff096d63606ceb82e65900d20a9fd2b8a93",
   whenAvailable = 1596059095000
-}   
+}
 --  where
 --    mockTime :: POSIXTime
 --    mockTime = 1596059095000 
