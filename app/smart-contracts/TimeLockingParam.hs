@@ -7,12 +7,11 @@
 {-# LANGUAGE TypeApplications    #-}
 {-# LANGUAGE TypeFamilies        #-}
 {-# LANGUAGE TypeOperators       #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+-- added above for makeLift
 
 -- V1 and V2 scripts
-module TimeLockingParam (
-    writeTimeLockingParamScriptV1,
-    writeTimeLockingParamScriptV2)
-where
+module TimeLockingParam where
 
 import           Cardano.Api              (writeFileTextEnvelope)
 import           Cardano.Api.Shelley      (PlutusScript (PlutusScriptSerialised),
@@ -29,6 +28,8 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
 
 import Ledger.Address as LA
 
+import Ledger (Address, ValidatorHash, PubKeyHash)
+
 import Plutus.V1.Ledger.Time
 import Plutus.V1.Ledger.Interval (contains, from)
 
@@ -36,19 +37,29 @@ import qualified Ledger.Typed.Scripts             as LTS
 import Ledger.Typed.Scripts.Validators as LTS.Validators
 
 import Plutus.V1.Ledger.Contexts (
-    ScriptContext, TxInfo, 
+    ScriptContext, TxInfo, TxOut, txOutAddress,
     txInfoValidRange, scriptContextTxInfo, 
     txSignedBy)
 import Plutus.V1.Ledger.Scripts as PLVS
 import qualified Plutus.Script.Utils.V1.Typed.Scripts as PSUV1
 import           Prelude                  (IO, (.), Show)
 
-
 data TimeLockingParam = TimeLockingParam {
-  beneficiaryOfFunds :: LA.PaymentPubKeyHash,
+  beneficiaryOfFunds :: PaymentPubKeyHash,
   whenAvailable :: POSIXTime
 } deriving Show
 
+-- makePubKey :: Maybe LA.PaymentPubKeyHash
+-- makePubKey = toPubKeyHash $ "dc0532b5c85013cace5b61243659dd8fae39169d6dafbb2756efd86fb885ef3c"
+
+mockData :: TimeLockingParam
+mockData = TimeLockingParam {
+  beneficiaryOfFunds = "3f7846896a48c59359746ff096d63606ceb82e65900d20a9fd2b8a93",
+  whenAvailable = 1596059095000
+}   
+--  where
+--    mockTime :: POSIXTime
+--    mockTime = 1596059095000 
 -- PARAMETERIZING INSTEAD OF USING THE DATUM
 PTX.makeLift ''TimeLockingParam
 -- leaving the makeData as it show the diff from liftCode when parameterizing
@@ -56,7 +67,7 @@ PTX.makeLift ''TimeLockingParam
 
 {-# INLINEABLE timeLockingValFn #-}
 timeLockingValFn :: TimeLockingParam -> () -> () -> ScriptContext -> Bool
-timeLockingValFn prm _ _ ctx = 
+timeLockingValFn prm () () ctx = 
    traceIfFalse "beneficiary's signature is missing" signedByBeneficiary &&
    traceIfFalse "funds still not unlocked - wait until date for unlocking has passed" hasEnoughTimePassed
   where
@@ -64,10 +75,18 @@ timeLockingValFn prm _ _ ctx =
     _info = scriptContextTxInfo ctx
 
     signedByBeneficiary :: Bool
-    signedByBeneficiary = txSignedBy _info $ unPaymentPubKeyHash $ beneficiaryOfFunds prm
+    signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ beneficiaryOfFunds prm
+    -- signedByBeneficiary = txSignedBy _info $ unPaymentPubKeyHash $ beneficiaryOfFunds $prm
 
     hasEnoughTimePassed :: Bool
     hasEnoughTimePassed = contains (from $ whenAvailable prm) $ txInfoValidRange _info
+
+    -- workaround by scanning txOuts and checking if any match
+    -- https://cardano.stackexchange.com/questions/6143/can-you-manually-list-an-address-in-a-smart-contract/6157#6157
+    -- outputToCorrectAddr :: TxOut -> Bool
+    -- outputToCorrectAddr txo = case toPubKeyHash $ txOutAddress txo of
+    --    Just pkh -> beneficiaryOfFunds mockData ==  pkh
+    --    Nothing  -> False
 
 
 data TimeLocking
@@ -75,34 +94,46 @@ instance LTS.ValidatorTypes TimeLocking where
   type instance DatumType TimeLocking = ()
   type instance RedeemerType TimeLocking = ()
 
-timeLockingValidator :: TimeLockingParam LTS.TypedValidator TimeLocking
+timeLockingValidator :: TimeLockingParam -> LTS.TypedValidator TimeLocking
 timeLockingValidator prm = LTS.mkTypedValidator @TimeLocking
-    $$(PTX.compile [|| timeLockingValFn ||]) `PTX.applyCode` PTX.liftCode prm
+    ($$(PTX.compile [|| timeLockingValFn ||]) `PTX.applyCode` PTX.liftCode prm)
     $$(PTX.compile [||  _wrap ||])
   where
     _wrap = mkUntypedValidator  @() @() 
 
-timeLockingValDone :: Plutus.Validator
-timeLockingValDone = validatorScript timeLockingValidator
+timeLockingValDone ::  TimeLockingParam -> Plutus.Validator
+timeLockingValDone = validatorScript . timeLockingValidator
 
-timeLockingScript :: Plutus.Script
-timeLockingScript = Plutus.unValidatorScript timeLockingValDone
+
+-- have to pass in TimeLockingParam to get this to compile on V2
+timeLockingScript :: TimeLockingParam -> Plutus.Script
+timeLockingScript = Plutus.unValidatorScript . timeLockingValDone
 
 -- Could add a validatorHash to use
 -- Could add a script address to use
 -- And so forth (endpoints and such)
 
+valHash :: TimeLockingParam -> Ledger.ValidatorHash
+valHash = validatorHash . timeLockingValidator
+
+
+-- DOUBLE CHECK THIS AS I changed scriptAdress to scriptHashAdrdress then passed in the script hash
+scriptAddr :: TimeLockingParam -> Ledger.Address
+scriptAddr = scriptHashAddress . valHash
+
+
+-- PlutusV2 issue serializing with it being parameterized
 timeLockingSBS :: SBS.ShortByteString
-timeLockingSBS = SBS.toShort . LBS.toStrict $ serialise timeLockingScript
+timeLockingSBS = SBS.toShort . LBS.toStrict $ serialise $ timeLockingScript mockData
 
-timeLockingSerialisedV1 :: PlutusScript PlutusScriptV1
-timeLockingSerialisedV1 = PlutusScriptSerialised timeLockingSBS
+-- timeLockingSerialisedV1 :: PlutusScript PlutusScriptV1
+-- timeLockingSerialisedV1 = PlutusScriptSerialised timeLockingSBS
 
-timeLockingSerialisedV2 :: PlutusScript PlutusScriptV2
-timeLockingSerialisedV2 = PlutusScriptSerialised timeLockingSBS
+-- timeLockingSerialisedV2 :: PlutusScript PlutusScriptV2
+-- timeLockingSerialisedV2 = PlutusScriptSerialised timeLockingSBS
 
-writeTimeLockingParamScriptV1 :: IO ()
-writeTimeLockingParamScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v1.plutus" Nothing timeLockingSerialisedV1
+-- writeTimeLockingParamScriptV1 :: IO ()
+-- writeTimeLockingParamScriptV1 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v1.plutus" Nothing timeLockingSerialisedV1
 
-writeTimeLockingParamScriptV2 :: IO ()
-writeTimeLockingParamScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v2.plutus" Nothing timeLockingSerialisedV2
+-- writeTimeLockingParamScriptV2 :: IO ()
+-- writeTimeLockingParamScriptV2 = void $ writeFileTextEnvelope "compiled-scripts/time-locking-param-v2.plutus" Nothing timeLockingSerialisedV2
