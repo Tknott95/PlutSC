@@ -25,7 +25,7 @@ import           PlutusTx.Prelude         as P hiding (Semigroup (..), unless,
                                                 (.))
 
 import Ledger.Address as LA
--- import Plutus.V1.Ledger.Contexts as PV1LC
+
 import Plutus.V1.Ledger.Time
 import Plutus.V1.Ledger.Interval (contains, from)
 
@@ -81,6 +81,10 @@ timeLockingValDone = validatorScript timeLockingValidator
 
 timeLockingScript :: Plutus.Script
 timeLockingScript = Plutus.unValidatorScript timeLockingValDone
+
+-- Could add a validatorHash to use
+-- Could add a script address to use
+-- And so forth
 
 timeLockingSBS :: SBS.ShortByteString
 timeLockingSBS = SBS.toShort . LBS.toStrict $ serialise timeLockingScript
