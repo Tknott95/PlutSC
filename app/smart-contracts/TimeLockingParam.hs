@@ -11,7 +11,10 @@
 -- added above for makeLift
 
 -- V1 and V2 scripts
-module TimeLockingParam where
+module TimeLockingParam (
+  writeTimeLockingParamScriptV1,
+  writeTimeLockingParamScriptV2
+) where
 
 import           Cardano.Api              (writeFileTextEnvelope)
 import           Cardano.Api.Shelley      (PlutusScript (PlutusScriptSerialised),
