@@ -49,7 +49,7 @@ import           Prelude                  (IO, (.), Show)
 
 -- changed from paymentPubKeyHash
 data TimeLockingParam = TimeLockingParam {
-  beneficiaryOfFunds :: PubKeyHash,
+  beneficiaryOfFunds :: PaymentPubKeyHash,
   whenAvailable :: POSIXTime
 } deriving Show
 
@@ -60,7 +60,7 @@ mockData :: TimeLockingParam
 mockData = TimeLockingParam {
   -- hard coded pub key and time to check against
   -- add in my test wallet pub key and test
-  beneficiaryOfFunds = "3f7846896a48c59359746ff096d63606ceb82e65900d20a9fd2b8a93",
+  beneficiaryOfFunds = PaymentPubKeyHash $ "3f7846896a48c59359746ff096d63606ceb82e65900d20a9fd2b8a93",
   whenAvailable = 1660802437
   -- 8/18/22
 }
@@ -83,8 +83,9 @@ timeLockingValFn prm () () ctx =
 
     -- changed from PaymentPubKeyHash and then pass the PubKeyHash to it to convert here to check
     signedByBeneficiary :: Bool
-    signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ PaymentPubKeyHash $ beneficiaryOfFunds prm
-    -- signedByBeneficiary = txSignedBy _info $ unPaymentPubKeyHash $ beneficiaryOfFunds $prm
+    signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ beneficiaryOfFunds prm
+    -- signedByBeneficiary = txSignedBy _info  $ unPaymentPubKeyHash $ PaymentPubKeyHash $ beneficiaryOfFunds prm
+
 
     hasEnoughTimePassed :: Bool
     hasEnoughTimePassed = contains (from $ whenAvailable prm) $ txInfoValidRange _info
