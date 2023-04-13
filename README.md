@@ -1,5 +1,7 @@
 # PlutScripts (When taking basic scripts from v1 to v2 for learning. Hasn't been updated in a long time.)
 
+### Initially, was working my way up complexity from V1 to V2 as there wasn't any documentation when PlutusV2 came to be. This became an unfinished repository as I want to add much more complex scripts/SCs in. Possibly in the future many more scripts will be added. For now this is pretty basic V1 to V2. 
+
 ``` NOTES FOR WHEN OPEN SOURCED
   Instead of an executable for each
   script I am going to just write them in main.
