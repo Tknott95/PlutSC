@@ -1,4 +1,4 @@
-# Plutz
+# PlutScripts (When taking basic scripts from v1 to v2 for learning. Hasn't been updated in a long time.)
 
 ``` NOTES FOR WHEN OPEN SOURCED
   Instead of an executable for each
