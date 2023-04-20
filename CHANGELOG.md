@@ -1,4 +1,4 @@
-# Revision history for Plutz
+# Revision history for PlutSC
 
 ## 0.1.0.0 -- YYYY-mm-dd
 
